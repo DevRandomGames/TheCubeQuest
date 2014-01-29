@@ -10,32 +10,43 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Array;
 
 public class CubeGame extends Game {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
-	private Texture texture;
+	private TextureAtlas texture;
 	private Sprite sprite;
 	private Screen mainmenu;
+	private Array<Sprite> ninja;
+	private int total;
 	
 	@Override
 	public void create() {		
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 		
+		
 		camera = new OrthographicCamera(1, h/w);
 		batch = new SpriteBatch();
 		
-		texture = new Texture(Gdx.files.internal("data/libgdx.png"));
-		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		texture = new TextureAtlas(Gdx.files.internal("data/NinjaMove.png"));
+		ninja = texture.createSprites("Nin");
 		
-		TextureRegion region = new TextureRegion(texture, 0, 0, 512, 275);
+		for(int i=0;i<ninja.size;++i){
+			ninja.get(i).setSize(3.0f, 3.0f);
+			ninja.get(i).setOrigin(ninja.get(i).getWidth()/2, ninja.get(i).getHeight()/2);
+			ninja.get(i).setPosition(-ninja.get(i).getWidth()/2, -ninja.get(i).getHeight()/2);
+		}
 		
-		sprite = new Sprite(region);
+		//TextureRegion region = new TextureRegion(texture, 0, 0, 512, 275);
+		
+		/*sprite = new Sprite(region);
 		sprite.setSize(0.9f, 0.9f * sprite.getHeight() / sprite.getWidth());
 		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
-		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);
+		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);*/
 	}
 
 	@Override
@@ -49,9 +60,12 @@ public class CubeGame extends Game {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		
+		float dt = Gdx.graphics.getDeltaTime();
+		total+=dt;
+		
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-		sprite.draw(batch);
+		ninja.get(total%7).draw(batch);
 		batch.end();
 	}
 
