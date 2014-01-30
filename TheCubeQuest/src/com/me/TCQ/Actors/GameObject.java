@@ -1,8 +1,8 @@
 package com.me.TCQ.Actors;
 
-public class Object extends ActorTemplate {
+public class GameObject extends ActorTemplate {
 
-	public Object() {
+	public GameObject() {
 		// TODO Auto-generated constructor stub
 	}
 

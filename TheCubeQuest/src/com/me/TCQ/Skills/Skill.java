@@ -1,4 +1,4 @@
-package com.me.TCQ.Actors;
+package com.me.TCQ.Skills;
 
 public class Skill {
 
