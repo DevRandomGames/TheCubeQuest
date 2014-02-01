@@ -13,6 +13,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
+import com.me.TCQ.Managers.LevelManager;
+import com.me.TCQ.UserInterface.InGameScreen;
 
 public class CubeGame extends Game {
 	private OrthographicCamera camera;
@@ -23,9 +25,20 @@ public class CubeGame extends Game {
 	private Array<Sprite> ninja;
 	private int total;
 	
+	
+	private InGameScreen theGameScreen;
+	private LevelManager levelManager;
+	
+	
 	@Override
 	public void create() {		
-		float w = Gdx.graphics.getWidth();
+		theGameScreen = new InGameScreen();
+		levelManager = new LevelManager();
+		
+		
+		
+		
+		/*float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 		
 		
@@ -43,7 +56,7 @@ public class CubeGame extends Game {
 		
 		//TextureRegion region = new TextureRegion(texture, 0, 0, 512, 275);
 		
-		/*sprite = new Sprite(region);
+		sprite = new Sprite(region);
 		sprite.setSize(0.9f, 0.9f * sprite.getHeight() / sprite.getWidth());
 		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
 		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);*/
@@ -56,8 +69,12 @@ public class CubeGame extends Game {
 	}
 
 	@Override
-	public void render() {		
-		Gdx.gl.glClearColor(1, 1, 1, 1);
+	public void render() {	
+		levelManager.renderLevel();
+		theGameScreen.render(0);
+		
+		
+		/*Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		
 		float dt = Gdx.graphics.getDeltaTime();
@@ -66,7 +83,7 @@ public class CubeGame extends Game {
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		ninja.get(total%7).draw(batch);
-		batch.end();
+		batch.end();*/
 	}
 
 	@Override
