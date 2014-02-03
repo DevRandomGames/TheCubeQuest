@@ -3,6 +3,7 @@ package com.me.TCQ;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -17,34 +18,20 @@ import com.me.TCQ.Managers.LevelManager;
 import com.me.TCQ.UserInterface.InGameScreen;
 
 public class CubeGame extends Game {
-	private OrthographicCamera camera;
-	private SpriteBatch batch;
-	private TextureAtlas texture;
-	private Sprite sprite;
-	private Screen mainmenu;
-	private Array<Sprite> ninja;
-	private int total;
-	
-	
+	private Screen mainMenu;
 	private InGameScreen theGameScreen;
 	private LevelManager levelManager;
+	private InputMultiplexer inMult;
 	
 	
 	@Override
 	public void create() {		
 		theGameScreen = new InGameScreen();
 		levelManager = new LevelManager();
+		inMult = new InputMultiplexer();
+		Gdx.input.setInputProcessor(inMult);
 		
-		
-		
-		
-		/*float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
-		
-		
-		camera = new OrthographicCamera(1, h/w);
-		batch = new SpriteBatch();
-		
+		/*
 		texture = new TextureAtlas(Gdx.files.internal("data/NinjaMove.png"));
 		ninja = texture.createSprites("Nin");
 		
@@ -59,31 +46,18 @@ public class CubeGame extends Game {
 		sprite = new Sprite(region);
 		sprite.setSize(0.9f, 0.9f * sprite.getHeight() / sprite.getWidth());
 		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
-		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);*/
+		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);
+		*/
 	}
 
 	@Override
 	public void dispose() {
-		batch.dispose();
-		texture.dispose();
 	}
 
 	@Override
 	public void render() {	
-		levelManager.renderLevel();
+		levelManager.createLevel();
 		theGameScreen.render(0);
-		
-		
-		/*Gdx.gl.glClearColor(1, 1, 1, 1);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-		
-		float dt = Gdx.graphics.getDeltaTime();
-		total+=dt;
-		
-		batch.setProjectionMatrix(camera.combined);
-		batch.begin();
-		ninja.get(total%7).draw(batch);
-		batch.end();*/
 	}
 
 	@Override

@@ -1,13 +1,22 @@
 package com.me.TCQ.LevelWorld;
 
+import com.badlogic.gdx.utils.Array;
+
 public class Level {
 	
-	Player MyPlayer;
-	Map MyMap;
+	Player myPlayer;
+	Array<MapTemplate> levelMaps;
 	
 
 	public Level() {
-		// TODO Auto-generated constructor stub
+		levelMaps = new Array<MapTemplate>();
+		for(int i = 0; i < 5; ++i)
+			levelMaps.add(new MapTemplate());
+		myPlayer = new Player();
+	}
+	
+	public void renderLevel(){
+		levelMaps.get(0).renderMap();
 	}
 
 }
