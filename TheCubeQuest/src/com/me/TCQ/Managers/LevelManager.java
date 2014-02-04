@@ -22,7 +22,7 @@ public class LevelManager {
 		
 	}
 	
-	public void createLevel(){
+	public void renderTheLevel(){
 		theLevel.renderLevel();
 	}
 

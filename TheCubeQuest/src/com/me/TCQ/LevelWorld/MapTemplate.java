@@ -22,38 +22,35 @@ public class MapTemplate extends Stage {
 	private World world;
 	private Box2DDebugRenderer debugRenderer;
 	private SpriteBatch batch;
+	private int Width;
+	private int Height;
 	
 
 	public MapTemplate() {
 		world = new World(new Vector2(0,-9.81f),true);
 		debugRenderer = new Box2DDebugRenderer();
-		
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
-		
-		camera = new OrthographicCamera(1, h/w);
+		Width = Gdx.graphics.getWidth();
+		Height = Gdx.graphics.getHeight();
+		camera = new OrthographicCamera(1, Height/Width);
 		batch = new SpriteBatch();
-		
 	}
 
 	public MapTemplate(float width, float height) {
 		super(width, height);
-		
 	}
 
 	public MapTemplate(float width, float height, boolean keepAspectRatio) {
 		super(width, height, keepAspectRatio);
-		
 	}
 
 	public MapTemplate(float width, float height, boolean keepAspectRatio, Batch batch) {
 		super(width, height, keepAspectRatio, batch);
-		
 	}
 	
 	public void renderMap() {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		
 		Texture texture = new Texture("data/libgdx.png");
 		Sprite sprite = new Sprite(texture);
 		sprite.setSize(0.9f, 0.9f);

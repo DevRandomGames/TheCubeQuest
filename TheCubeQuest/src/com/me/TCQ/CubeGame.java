@@ -56,7 +56,7 @@ public class CubeGame extends Game {
 
 	@Override
 	public void render() {	
-		levelManager.createLevel();
+		levelManager.renderTheLevel();
 		theGameScreen.render(0);
 	}
 
