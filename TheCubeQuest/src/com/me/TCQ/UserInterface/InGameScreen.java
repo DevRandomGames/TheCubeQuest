@@ -21,9 +21,9 @@ public class InGameScreen extends ScreenTemplate {
 		Sprite sprite = new Sprite(texture);
 		sprite.setSize(0.1f, 0.1f);
 		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
-		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);
+		sprite.setPosition((Gdx.graphics.getWidth()-2*sprite.getWidth()), (Gdx.graphics.getHeight()-2*sprite.getHeight()));
 		SpriteBatch batch = new SpriteBatch();
-		OrthographicCamera camera = new OrthographicCamera(1,1);
+		OrthographicCamera camera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		sprite.draw(batch);

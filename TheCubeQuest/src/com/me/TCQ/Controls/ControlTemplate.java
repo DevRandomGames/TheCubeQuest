@@ -1,8 +1,10 @@
 package com.me.TCQ.Controls;
 
 import com.badlogic.gdx.InputProcessor;
+import com.me.TCQ.Actors.Entity;
 
 public abstract class ControlTemplate implements InputProcessor {
+	
 
 	public ControlTemplate() {
 		// TODO Auto-generated constructor stub
