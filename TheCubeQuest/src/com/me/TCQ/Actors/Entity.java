@@ -6,7 +6,7 @@ import com.badlogic.gdx.utils.ObjectMap;
 import com.me.TCQ.Controls.ControlTemplate;
 import com.me.TCQ.Skills.*;
 
-public class Entity extends ActorTemplate {
+public abstract class Entity extends ActorTemplate {
 	
 	/////STATS/////
 	private int Life;

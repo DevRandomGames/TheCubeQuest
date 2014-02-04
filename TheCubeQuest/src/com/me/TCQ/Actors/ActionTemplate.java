@@ -2,7 +2,7 @@ package com.me.TCQ.Actors;
 
 import com.badlogic.gdx.scenes.scene2d.Action;
 
-public class ActionTemplate extends Action {
+public abstract class ActionTemplate extends Action {
 
 	public ActionTemplate() {
 		// TODO Auto-generated constructor stub
