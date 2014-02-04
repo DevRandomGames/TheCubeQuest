@@ -15,6 +15,10 @@ public class IAControl extends ControlTemplate {
 		HOSTILE,ALIES
 	}
 	
+	public enum Direction{
+		LEFT,RIGTH
+	}
+	
 	private Entity entity;
 	private State state;
 	private State lastState;
@@ -23,20 +27,20 @@ public class IAControl extends ControlTemplate {
 	public IAControl() {
 		// TODO Auto-generated constructor stub
 		StateTime = 0;
-		state = lastState = IAControl.State.IDLE;
+		state = lastState = State.IDLE;
 	}
 	
 	public IAControl(Entity en) {
 		StateTime=0;
 		entity = en;
-		state = lastState = IAControl.State.IDLE;
+		state = lastState = State.IDLE;
 		Idle();
 	}
 	
 	
 	public void Idle(){
 		MoveByAction left,right;
-		state = IAControl.State.IDLE;
+		state = State.IDLE;
 		//Movimiento de algunos metros a la izquierda
 		left = new MoveByAction();
 		left.setAmountX(-5); // 5 metros?? 5 pixeles?? no lo tengo claro
@@ -52,7 +56,7 @@ public class IAControl extends ControlTemplate {
 	}
 	
 	public void Alert(Vector2 playerposition){
-		state = IAControl.State.ALERT;
+		state = State.ALERT;
 		// Se mueve hacia la posicion donde le ha parecido detectar movimiento
 		MoveToAction patrol = new MoveToAction();
 		patrol.setPosition(playerposition.x, playerposition.y);
@@ -80,5 +84,13 @@ public class IAControl extends ControlTemplate {
 		entity = en;
 		Idle();
 	}
+	
+	private void jump(Direction dir){
+		if(dir == Direction.LEFT){
+				
+		}
+		else entity.setPosition(entity.getX()+5, entity.getY()+20);
+	}
+	
 
 }
