@@ -13,6 +13,8 @@ public abstract class Entity extends ActorTemplate {
 	private int Armor;
 	private int Strong;
 	private int Mana;
+	private int Speed;
+	private int Jump;
 	
 	///////////////
 	
@@ -65,6 +67,26 @@ public abstract class Entity extends ActorTemplate {
 
 	public void setMana(int mana) {
 		Mana = mana;
+	}
+
+
+	public int getSpeed() {
+		return Speed;
+	}
+
+
+	public void setSpeed(int speed) {
+		Speed = speed;
+	}
+
+
+	public int getJump() {
+		return Jump;
+	}
+
+
+	public void setJump(int jump) {
+		Jump = jump;
 	}
 
 }
