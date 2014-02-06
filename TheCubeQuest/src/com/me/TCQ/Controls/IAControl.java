@@ -7,40 +7,45 @@ import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.actions.RepeatAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.me.TCQ.Actors.Entity;
+import com.me.TCQ.Actors.NPC;
 
 public class IAControl extends ControlTemplate {
-	
-	public enum State {
-		IDLE,ALERT,
-		HOSTILE,ALIES
-	}
-	
+		
 	public enum Direction{
 		LEFT,RIGTH
 	}
 	
-	private Entity entity;
-	private State state;
-	private State lastState;
+	private NPC entity;
 	private float StateTime;
 
 	public IAControl() {
 		// TODO Auto-generated constructor stub
 		StateTime = 0;
-		state = lastState = State.IDLE;
 	}
 	
-	public IAControl(Entity en) {
+	public IAControl(NPC en) {
 		StateTime=0;
 		entity = en;
-		state = lastState = State.IDLE;
 		Idle();
+	}
+	
+	public void WhatIDo(){
+		switch(entity.getMyState()){
+		
+			case IDLE: Idle();
+				break;
+			case ALERT: Idle();
+				break;
+			case HOSTILE: Idle();
+				break;
+			case ALIES: Idle();
+				break;	
+		}
 	}
 	
 	
 	public void Idle(){
 		MoveByAction left,right;
-		state = State.IDLE;
 		//Movimiento de algunos metros a la izquierda
 		left = new MoveByAction();
 		left.setAmountX(-5); // 5 metros?? 5 pixeles?? no lo tengo claro
@@ -56,7 +61,6 @@ public class IAControl extends ControlTemplate {
 	}
 	
 	public void Alert(Vector2 playerposition){
-		state = State.ALERT;
 		// Se mueve hacia la posicion donde le ha parecido detectar movimiento
 		MoveToAction patrol = new MoveToAction();
 		patrol.setPosition(playerposition.x, playerposition.y);
@@ -76,21 +80,17 @@ public class IAControl extends ControlTemplate {
 		
 	}
 	
-	public boolean StateChange(){
-		return lastState == state;
-	}
 	
-	public void setEntity(Entity en){
+	public void setEntity(NPC en){
 		entity = en;
 		Idle();
 	}
 	
 	private void jump(Direction dir){
 		if(dir == Direction.LEFT){
-				
+				entity.getBody().applyLinearImpulse(-20f, entity.getJump(), entity.getBody().getPosition().x, entity.getBody().getPosition().y, true);
 		}
-		else entity.setPosition(entity.getX()+5, entity.getY()+20);
+		else entity.getBody().applyLinearImpulse(20f, entity.getJump(), entity.getBody().getPosition().x, entity.getBody().getPosition().y, true);
 	}
 	
-
 }
