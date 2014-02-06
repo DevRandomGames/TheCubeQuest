@@ -17,6 +17,11 @@ public abstract class Entity extends ActorTemplate {
 	private int Jump;
 	
 	///////////////
+	//Direction of the entity
+	public enum Direction{
+		LEFT,RIGTH
+	}
+	private Direction MyDirection;
 	
 	
 	private ControlTemplate MyControl;
@@ -87,6 +92,22 @@ public abstract class Entity extends ActorTemplate {
 
 	public void setJump(int jump) {
 		Jump = jump;
+	}
+	
+	public void Jump(){
+		
+	}
+	
+	public void WalkLeft(){
+		
+	}
+	
+	public void WalkRight(){
+		
+	}
+	
+	public void Attack(){
+		
 	}
 
 }
