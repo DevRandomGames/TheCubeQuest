@@ -22,6 +22,7 @@ public class PlayerControl extends ControlTemplate {
 			case Input.Keys.E: character.Interaction();break;
 				
 		}
+		return true;
 	}
 
 	@Override
@@ -43,6 +44,7 @@ public class PlayerControl extends ControlTemplate {
 			case Input.Buttons.RIGHT: character.DefenseOn();break;
 			
 		}
+		return true;
 	}
 
 	@Override
@@ -50,6 +52,7 @@ public class PlayerControl extends ControlTemplate {
 		switch(button){
 			case Input.Buttons.RIGHT: character.DefenseOff();break;
 		}
+		return true;
 		
 	}
 

@@ -11,9 +11,6 @@ import com.me.TCQ.Actors.NPC;
 
 public class IAControl extends ControlTemplate {
 		
-	public enum Direction{
-		LEFT,RIGTH
-	}
 	
 	private NPC entity;
 	private float StateTime;
@@ -86,11 +83,6 @@ public class IAControl extends ControlTemplate {
 		Idle();
 	}
 	
-	private void jump(Direction dir){
-		if(dir == Direction.LEFT){
-				entity.getBody().applyLinearImpulse(-20f, entity.getJump(), entity.getBody().getPosition().x, entity.getBody().getPosition().y, true);
-		}
-		else entity.getBody().applyLinearImpulse(20f, entity.getJump(), entity.getBody().getPosition().x, entity.getBody().getPosition().y, true);
-	}
+
 	
 }
