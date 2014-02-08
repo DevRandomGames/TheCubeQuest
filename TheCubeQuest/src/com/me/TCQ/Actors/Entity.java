@@ -1,6 +1,8 @@
 package com.me.TCQ.Actors;
 
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.me.TCQ.Controls.ControlTemplate;
@@ -24,6 +26,10 @@ public abstract class Entity extends ActorTemplate {
 	private Direction MyDirection;
 	
 	
+	public Direction getDirection() {
+		return MyDirection;
+	}
+
 	private ControlTemplate MyControl;
 	private ObjectMap<String,GameObject> MyObject;
 	private Array<Skill> MySkills;

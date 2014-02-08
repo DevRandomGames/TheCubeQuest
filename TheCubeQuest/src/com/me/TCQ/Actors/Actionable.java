@@ -8,6 +8,6 @@ public abstract class Actionable extends Uncollectable {
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	public abstract void onUse(Entity entityUse);
 
 }

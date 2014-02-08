@@ -2,6 +2,7 @@ package com.me.TCQ.Actors;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;

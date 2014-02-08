@@ -57,7 +57,7 @@ public class CubeGame extends Game {
 	@Override
 	public void render() {	
 		levelManager.renderTheLevel();
-		theGameScreen.render(0);
+		theGameScreen.render(Gdx.graphics.getDeltaTime());
 	}
 
 	@Override
